@@ -1,5 +1,7 @@
 import { Hono } from 'hono'
 
+import newDocsHtml from './new-docs.html'
+
 export const Home = new Hono()
 
 export const Meteors = ({ number }: { number: number }) => {
@@ -20,6 +22,11 @@ export const Meteors = ({ number }: { number: number }) => {
     </>
   )
 }
+
+Home.get(
+  '/new-docs', (c) => c.html(newDocsHtml)
+)
+
 
 Home.get('/', (c) => {
   const title = 'JioSaavn API'
@@ -126,6 +133,22 @@ Home.get('/', (c) => {
                 <span class="text-neutral-200 font-bold text-lg sm:text-xl md:text-2xl mt-2">Explore the Docs</span>
                 <div class="text-neutral-500 mt-2">
                   Check out the documentation to learn how to use the JioSaavn API.
+                </div>
+              </div>
+            </a>
+
+            <a
+              target="_blank"
+              class="p-4 sm:p-8 hover:bg-opacity-5 hover:bg-white rounded-lg duration-100 sm:col-span-4"
+              href="/new-docs"
+              >
+              <div class="flex flex-col">
+                <span class="text-xs uppercase bg-opacity-15 rounded text-center max-w-fit px-2 py-1 font-bold tracking-wide bg-teal-500 text-teal-500">
+                  New
+                </span>
+                <span class="text-neutral-200 font-bold text-lg sm:text-xl md:text-2xl mt-2">Explore the New Docs</span>
+                <div class="text-neutral-500 mt-2">
+                  A redesigned documentation with live "Try it" requests, code samples and search.
                 </div>
               </div>
             </a>
